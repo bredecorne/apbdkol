@@ -22,6 +22,7 @@ public class ClientsController : ControllerBase
             .Include(c => c.Sales)
             .ThenInclude(s => s.Subscription)
             .FirstOrDefaultAsync(c => c.IdClient == idClient);
+        
 
         if (client == null)
         {
