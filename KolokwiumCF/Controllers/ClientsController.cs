@@ -1,3 +1,4 @@
+using KolokwiumCF.DTOs;
 using KolokwiumCF.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,6 @@ public class ClientsController : ControllerBase
             .ThenInclude(s => s.Subscription)
             .FirstOrDefaultAsync(c => c.IdClient == idClient);
         
-
         if (client == null)
         {
             return NotFound();

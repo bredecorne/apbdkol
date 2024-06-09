@@ -11,7 +11,7 @@ public class Subscription
     [MaxLength(100)]
     public string Name { get; set; }
 
-    public DateTime RenewalDate { get; set; }
+    public int RenewalPeriod { get; set; }
 
     public DateTime EndTime { get; set; }
 
@@ -22,11 +22,11 @@ public class Subscription
     
     public virtual ICollection<Payment> Payments { get; set; } 
 
-    public Subscription(int idSubscription, string name, DateTime renewalDate, DateTime endTime, decimal price)
+    public Subscription(int idSubscription, string name, int renewalPeriod, DateTime endTime, decimal price)
     {
         IdSubscription = idSubscription;
         Name = name;
-        RenewalDate = renewalDate;
+        RenewalPeriod = RenewalPeriod;
         EndTime = endTime;
         Price = price;
     }

@@ -18,7 +18,6 @@ public class PaymentsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> AddPayment(int idClient, int idSubscription, decimal price)
     {
-        // 1 i 2
         var client = await _dbContext.Clients
             .Include(c => c.Discounts)
             .Include(c => c.Sales)
@@ -32,19 +31,25 @@ public class PaymentsController : ControllerBase
             return NotFound();
         }
         
-        // 3
         if (subscription.EndTime > DateTime.Now)
         {
             return BadRequest();
         }
         
-        // 4
-        // if (client.Sales.Contains())
+        if (client.Sales.Count > 0)
+        {
+            return BadRequest();
+        }
 
-        // 5
         if (!subscription.Price.Equals(price))
         {
             return BadRequest();
+        }
+        
+        var discount = client.Discounts.FirstOrDefault();
+        if (discount != null)
+        {
+            price *= (1 - discount.Value);
         }
 
         var payment = new Payment(DateTime.Now, idClient, idSubscription);
