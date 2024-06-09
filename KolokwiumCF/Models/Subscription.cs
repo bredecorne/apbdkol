@@ -17,6 +17,10 @@ public class Subscription
 
     [Column(TypeName="money")]
     public decimal Price { get; set; }
+    
+    public virtual ICollection<Sale> Sales { get; set; }
+    
+    public virtual ICollection<Payment> Payments { get; set; } 
 
     public Subscription(int idSubscription, string name, DateTime renewalDate, DateTime endTime, decimal price)
     {

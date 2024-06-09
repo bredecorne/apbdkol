@@ -8,11 +8,15 @@ public class Sale
     [Key]
     public int IdSale { get; set; }
 
-    [ForeignKey("IdClient")]
+    [ForeignKey("Client")]
     public int IdClient { get; set; }
+    
+    public Client Client { get; set; }
 
-    [ForeignKey("IdSubscription")]
+    [ForeignKey("Subscription")]
     public int IdSubscription { get; set; }
+    
+    public Subscription Subscription { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

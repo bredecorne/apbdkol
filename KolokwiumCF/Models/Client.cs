@@ -18,7 +18,11 @@ public class Client
 
     [MaxLength(100)]
     public string Phone { get; set; }
-
+    
+    public virtual ICollection<Sale> Sales { get; set; }
+    
+    public virtual ICollection<Discount> Discounts { get; set; }
+    
     public Client(int idClient, string firstName, string lastName, string email, string phone)
     {
         IdClient = idClient;

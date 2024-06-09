@@ -10,11 +10,22 @@ public class Payment
 
     public DateTime Date { get; set; }
 
-    [ForeignKey("IdClient")]
+    [ForeignKey("Client")]
     public int IdClient { get; set; }
+    
+    [ForeignKey("Subscription")]  
+    public int IdSubscription { get; set; } 
+    
+    public Client Client { get; set; }
+    
+    public Subscription Subscription { get; set; }
 
-    [ForeignKey("IdSubscription")]
-    public int IdSubscription { get; set; }
+    public Payment(DateTime date, int idClient, int idSubscription)
+    {
+        Date = date;
+        IdClient = idClient;
+        IdSubscription = idSubscription;
+    }
 
     public Payment(int idPayment, DateTime date, int idClient, int idSubscription)
     {

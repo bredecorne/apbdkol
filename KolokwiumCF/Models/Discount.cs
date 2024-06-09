@@ -16,6 +16,8 @@ public class Discount
 
     [ForeignKey("IdClient")]
     public int IdClient { get; set; }
+    
+    public virtual ICollection<Client> Clients { get; set; }
 
     public Discount(int idDiscount, int value, DateTime dateFrom, DateTime dateTo, int idClient)
     {
